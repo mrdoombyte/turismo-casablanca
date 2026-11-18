@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Casablanca · Ruta Casco Histórico</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F2F3E9;--bg2:#E8EDDF;--card:#F8F8EF;--ink:#173D2A;--mute:#5F7565;--acc:#628B50;--soft:#B8D49C;--line:#CFD9C8;--dark:#244D34;--street:#fff;--block:#DDE5D2;--map:#EAEFDF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10211a;--bg2:#14291f;--card:#1a3226;--ink:#E7EFDD;--mute:#A9BBA9;--acc:#9CC47F;--soft:#B8D49C;--line:#2c4a3a;--dark:#0c1a13;--street:#2a4636;--block:#1e3a2b;--map:#163025}}
+:root[data-theme="dark"]{--bg:#10211a;--bg2:#14291f;--card:#1a3226;--ink:#E7EFDD;--mute:#A9BBA9;--acc:#9CC47F;--soft:#B8D49C;--line:#2c4a3a;--dark:#0c1a13;--street:#2a4636;--block:#1e3a2b;--map:#163025}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.6 'DM Sans',system-ui,sans-serif}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:400;margin:0}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:14px;padding-bottom:14px;gap:12px}
+.logo{font:400 20px 'Playfair Display',serif;letter-spacing:.03em}
+.btn{font:inherit;cursor:pointer;border:1px solid var(--line);background:none;color:var(--ink);border-radius:99px;padding:8px 16px;text-decoration:none;display:inline-block}
+.btn.pri{background:var(--soft);color:#21432E;border-color:var(--soft);font-weight:700;padding:13px 24px}
+.btn:focus-visible,.pin:focus-visible,.star:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+section{padding:56px 0}
+.hero{padding-bottom:24px}
+.tag{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--acc)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+h1{font-size:clamp(40px,8vw,72px);line-height:1;margin:22px 0 16px}
+h1 em{color:var(--acc)}
+.lead{color:var(--mute);max-width:620px;margin:0 0 20px}
+.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden;max-width:620px}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .5s}
+.mapbox{display:grid;grid-template-columns:1.6fr 1fr;gap:20px;margin-top:32px}
+.map{background:var(--map);border:1px solid var(--line);border-radius:26px;overflow:hidden}
+.map svg{display:block;width:100%;height:auto}
+.pin{cursor:pointer}
+.pin circle{transition:r .2s}
+.panel{background:var(--dark);color:#fff;border-radius:26px;padding:28px;display:flex;flex-direction:column;gap:10px}
+.panel small{color:var(--soft);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:11px}
+.panel h3{font-size:30px;line-height:1.1}
+.panel p{margin:0;color:rgba(255,255,255,.75)}
+.panel .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:14px}
+.panel .btn{border-color:rgba(255,255,255,.3);color:#fff;font-size:13px}
+.panel .btn.pri{color:#21432E}
+.alt{background:var(--bg2);border-block:1px solid var(--line)}
+h2{font-size:clamp(30px,5vw,46px);line-height:1.05;margin-bottom:10px}
+.grid{display:grid;gap:22px;margin-top:32px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:26px;overflow:hidden;display:flex;flex-direction:column}
+.card.done{border-color:var(--acc)}
+.ph{height:120px;background:linear-gradient(135deg,var(--block),var(--soft));display:flex;align-items:flex-end;padding:14px}
+.chip{font-size:11px;font-weight:700;background:var(--dark);color:#fff;border-radius:99px;padding:4px 12px}
+.chip.ok{background:var(--acc)}
+.cb{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.cb h3{font-size:26px;line-height:1.15}
+.cb p{margin:0;color:var(--mute);font-size:14px}
+.how{background:var(--bg2);border-radius:14px;padding:12px 14px;font-size:13px;color:var(--mute)}
+.stars{display:flex;gap:2px}
+.star{background:none;border:0;font-size:24px;cursor:pointer;color:var(--line);padding:0 2px}
+.star.on{color:#D9A92E}
+.star:disabled{cursor:not-allowed;opacity:.5}
+.meta{font-size:12px;color:var(--mute);font-weight:600}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+footer{background:#173D2A;color:rgba(255,255,255,.65);padding:32px 0;font-size:14px}
+footer .wrap{display:flex;gap:24px;justify-content:space-between;flex-wrap:wrap}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(120px);background:#173D2A;color:#fff;padding:12px 22px;border-radius:99px;transition:transform .3s;z-index:9;font-size:14px}
+#toast.show{transform:translateX(-50%)}
+@media (max-width:760px){.mapbox{grid-template-columns:1fr}.wrap{padding:0 16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <span class="logo">Casablanca</span>
+  <div class="row"><span>Hola, <b id="nombre">viajero</b></span><a class="btn" id="editar" href="#perfil">Editar perfil</a></div>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <span class="tag"><span class="dot"></span><span id="qrtag">Ruta viva en el Casco Histórico</span></span>
+  <h1>Descubre la ciudad,<br><em>calle a calle.</em></h1>
+  <p class="lead" id="intro">Cinco paradas a pie en el corazón de Casablanca. Toca un punto del mapa, camina hasta allí y escanea su QR.</p>
+  <div class="bar" aria-label="Avance de la ruta"><i id="prog"></i></div>
+  <p class="meta" id="progtxt"></p>
+
+  <div class="mapbox">
+    <div class="map"><svg id="svg" viewBox="0 0 800 520" role="img" aria-label="Mapa esquemático del Casco Histórico de Casablanca"></svg></div>
+    <aside class="panel" id="panel" aria-live="polite"></aside>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <h2>Escanea, visita y valora</h2>
+  <p class="lead">Al llegar a cada lugar escanea su QR. La parada queda guardada y puedes contar cómo fue tu experiencia.</p>
+  <div class="grid" id="stops"></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Come, descansa y sigue explorando</h2>
+  <p class="lead">Recomendaciones para completar el recorrido sin salir del centro.</p>
+  <div class="grid" id="extras"></div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span class="logo" style="color:#fff">Casablanca</span><span>Tu avance y valoraciones quedan guardados en este dispositivo.</span></div></footer>
+<div id="toast" role="status"></div>
+
+<script>
+/* ===== CONFIGURACIÓN ===== */
+var FORM_URL = "index.html";         // página del formulario (misma carpeta)
+var STORE = "casablanca-casco-v1";
+/* Coordenadas aproximadas: verifícalas antes de publicar. x,y = posición en el mapa esquemático. */
+var STOPS = [
+ {id:"info",n:1,x:150,y:330,t:"Oficina de Información Turística",c:"Punto de partida",d:"Mapas, consejos y sellos para empezar tu recorrido por el centro.",h:"Empieza aquí y pide el plano del casco histórico.",lat:-33.3189,lng:-71.4107,w:"Punto de partida"},
+ {id:"constitucion",n:2,x:300,y:250,t:"Calle Constitución",c:"Comercio y vida local",d:"La calle donde late el día a día: panaderías, ferias y cafés de barrio.",h:"Camina por la vereda hacia la plaza.",lat:-33.3192,lng:-71.4100,w:"3 min a pie"},
+ {id:"plaza",n:3,x:440,y:200,t:"Plaza de Armas",c:"Corazón de la ciudad",d:"El punto de encuentro de Casablanca, con sombra, bancas y la vida del pueblo.",h:"Escanea el QR del letrero informativo.",lat:-33.3187,lng:-71.4090,w:"4 min a pie"},
+ {id:"iglesia",n:4,x:540,y:140,t:"Iglesia de Casablanca",c:"Patrimonio",d:"Torre y fachada que se ven desde la plaza. Parte de la historia del valle.",h:"Rodea la plaza y mira hacia la torre.",lat:-33.3183,lng:-71.4084,w:"2 min a pie"},
+ {id:"portales",n:5,x:660,y:260,t:"Avenida Portales",c:"Cierre del recorrido",d:"Arteria principal de entrada a la ciudad. Termina la ruta con un café.",h:"Desde la iglesia sigue hacia el oriente.",lat:-33.3196,lng:-71.4070,w:"6 min a pie"}
+];
+var EXTRAS = [
+ {k:"Para comer",t:"Macerado Cocina de Campo",d:"Cocina chilena contemporánea y productos del valle.",m:"Almuerzo · Reserva sugerida"},
+ {k:"Dónde dormir",t:"Hotel Casablanca Spa & Wine",d:"Descanso, naturaleza y spa a pocos minutos del centro.",m:"Hotel · Piscina · Spa"},
+ {k:"Actividad adicional",t:"Paseo en bicicleta por el casco",d:"Recorre calles y plazas a otro ritmo, con paradas para fotos.",m:"1–2 horas · Dificultad baja"}
+];
+
+/* ===== ESTADO ===== */
+var S = {nombre:"",visited:{},rating:{},sel:"info"};
+try{var r=localStorage.getItem(STORE);if(r)Object.assign(S,JSON.parse(r))}catch(e){}
+try{ /* datos que envía el formulario (misma página/origen) */
+ var p=JSON.parse(localStorage.getItem("casablanca-perfil")||"null");
+ if(p&&p.nombre)S.nombre=p.nombre;
+ if(p&&p.intereses)document.getElementById("intro").textContent="Seleccionaste "+p.intereses+". Te armamos un recorrido a pie por el centro de Casablanca.";
+}catch(e){}
+function save(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
+function $(i){return document.getElementById(i)}
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.k);toast.k=setTimeout(function(){t.classList.remove("show")},2600)}
+function find(id){return STOPS.filter(function(s){return s.id===id})[0]}
+function gmaps(s){return "https://www.google.com/maps/search/?api=1&query="+s.lat+","+s.lng}
+function next(){return STOPS.filter(function(s){return !S.visited[s.id]})[0]}
+
+/* ===== MAPA ===== */
+function drawMap(){
+ var g="",i;
+ for(i=0;i<9;i++)g+='<line x1="'+(40+i*95)+'" y1="0" x2="'+(40+i*95+60)+'" y2="520" />';
+ for(i=0;i<7;i++)g+='<line x1="0" y1="'+(30+i*80)+'" x2="800" y2="'+(i*80-10)+'" />';
+ var path=STOPS.map(function(s){return s.x+","+s.y}).join(" ");
+ var pins=STOPS.map(function(s){
+  var v=S.visited[s.id],sel=S.sel===s.id;
+  return '<g class="pin" tabindex="0" role="button" data-id="'+s.id+'" aria-label="Parada '+s.n+': '+s.t+'">'+
+  '<circle cx="'+s.x+'" cy="'+s.y+'" r="'+(sel?24:19)+'" fill="'+(v?"#628B50":"#244D34")+'" stroke="#fff" stroke-width="3"/>'+
+  '<text x="'+s.x+'" y="'+(s.y+6)+'" text-anchor="middle" fill="#fff" font-family="DM Sans" font-weight="700" font-size="16">'+(v?"✓":s.n)+'</text>'+
+  '<text x="'+s.x+'" y="'+(s.y+(sel?44:40))+'" text-anchor="middle" fill="var(--ink)" font-family="DM Sans" font-weight="600" font-size="14" paint-order="stroke" stroke="var(--map)" stroke-width="4">'+s.t+'</text></g>';
+ }).join("");
+ $("svg").innerHTML='<rect width="800" height="520" fill="var(--map)"/><g stroke="var(--street)" stroke-width="14" opacity=".9">'+g+'</g>'+
+ '<rect x="400" y="170" width="90" height="62" rx="8" fill="#B8D49C" opacity=".75" transform="rotate(-8 445 200)"/>'+
+ '<polyline points="'+path+'" fill="none" stroke="#628B50" stroke-width="5" stroke-dasharray="2 11" stroke-linecap="round"/>'+pins;
+ Array.prototype.forEach.call($("svg").querySelectorAll(".pin"),function(el){
+  el.onclick=function(){select(el.dataset.id)};
+  el.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();select(el.dataset.id)}};
+ });
+}
+function panel(){
+ var s=find(S.sel),v=S.visited[s.id];
+ $("panel").innerHTML='<small>'+(next()&&next().id===s.id?"Siguiente parada":"Parada "+s.n+" de 5")+'</small><h3>'+s.t+'</h3><p>'+s.d+'</p><p class="meta" style="color:var(--soft)">'+s.w+' · '+s.h+'</p>'+
+ '<div class="row"><button class="btn pri" id="scan">'+(v?"Visita completada ✓":"Escanear QR")+'</button><a class="btn" target="_blank" rel="noopener" href="'+gmaps(s)+'">Abrir en Google Maps</a></div>';
+ $("scan").onclick=function(){visit(s.id)};
+}
+function select(id){S.sel=id;save();drawMap();panel()}
+
+/* ===== TARJETAS ===== */
+function cards(){
+ $("stops").innerHTML=STOPS.map(function(s){
+  var v=S.visited[s.id],r=S.rating[s.id]||0,st="";
+  for(var i=1;i<=5;i++)st+='<button class="star'+(i<=r?" on":"")+'" data-s="'+s.id+'" data-v="'+i+'" '+(v?"":"disabled")+' aria-label="'+i+' estrellas">★</button>';
+  return '<article class="card'+(v?" done":"")+'"><div class="ph"><span class="chip'+(v?" ok":"")+'">'+(v?"Visita completada":"Parada "+s.n)+'</span></div><div class="cb">'+
+  '<span class="meta">'+s.c+' · '+s.w+'</span><h3>'+s.t+'</h3><p>'+s.d+'</p><div class="how">'+s.h+'</div>'+
+  '<div><span class="meta">'+(v?"¿Cómo te pareció?":"Escanea el QR para valorar")+'</span><div class="stars">'+st+'</div></div>'+
+  '<div class="row" style="margin-top:auto"><button class="btn" data-scan="'+s.id+'">'+(v?"Ver en el mapa":"Escanear QR")+'</button><a class="btn" target="_blank" rel="noopener" href="'+gmaps(s)+'">Google Maps</a></div></div></article>';
+ }).join("");
+ Array.prototype.forEach.call($("stops").querySelectorAll(".star"),function(b){
+  b.onclick=function(){S.rating[b.dataset.s]=+b.dataset.v;save();cards();toast("Gracias por tu valoración")}});
+ Array.prototype.forEach.call($("stops").querySelectorAll("[data-scan]"),function(b){
+  b.onclick=function(){var id=b.dataset.scan;if(S.visited[id]){select(id);$("svg").scrollIntoView()}else visit(id)}});
+}
+function visit(id){
+ if(!S.visited[id]){S.visited[id]=Date.now();toast("Parada guardada: "+find(id).t)}
+ var n=next();S.sel=n?n.id:id;save();render();
+}
+function progress(){
+ var d=STOPS.filter(function(s){return S.visited[s.id]}).length;
+ $("prog").style.width=(d/STOPS.length*100)+"%";
+ $("progtxt").textContent=d===STOPS.length?"¡Ruta completada! Gracias por recorrer Casablanca.":d+" de "+STOPS.length+" paradas visitadas";
+}
+function render(){drawMap();panel();cards();progress();$("nombre").textContent=S.nombre||"viajero"}
+
+/* ===== EXTRAS ===== */
+$("extras").innerHTML=EXTRAS.map(function(e){return '<article class="card"><div class="ph"></div><div class="cb"><span class="meta">'+e.k+'</span><h3>'+e.t+'</h3><p>'+e.d+'</p><span class="meta">'+e.m+'</span></div></article>'}).join("");
+
+/* ===== ARRANQUE ===== */
+$("editar").href=FORM_URL;
+render();
+/* Un QR puede abrir esta página con #info, #plaza, etc. y marca la parada automáticamente */
+function fromHash(){var id=location.hash.slice(1);if(find(id)){$("qrtag").textContent="QR detectado en "+find(id).t;visit(id)}}
+fromHash();window.addEventListener("hashchange",fromHash);
+</script>
+</body>
+</html>
