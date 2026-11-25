@@ -58,6 +58,26 @@ h2{font-size:clamp(34px,5vw,54px);color:var(--ink);margin-bottom:18px}
 .p1{background:linear-gradient(to top,#2b0a14f0,#2b0a1440),linear-gradient(135deg,#8c6e66,#5d4b52)}
 .p2{background:linear-gradient(to top,#2b0a14f0,#2b0a1440),linear-gradient(160deg,#7b6a74,#41303a)}
 .p3{background:linear-gradient(to top,#2b0a14f0,#2b0a1440),linear-gradient(120deg,#b08a5a,#7a4a3a)}
+/* Carrusel de atracciones (sección Patrimonio) */
+.carrusel{margin-top:64px}
+.car-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.car-head small{font:500 10px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--gold2)}
+.car-head h3{font-size:30px;color:#f1e6d8;margin-top:6px}
+.car-nav{display:flex;gap:8px}
+.car-nav button{width:44px;height:44px;background:none;border:1px solid var(--gold);color:var(--gold2);font:500 18px var(--ui);cursor:pointer}
+.car-nav button:hover{background:#ffffff14}
+.track{display:grid;grid-auto-flow:column;grid-auto-columns:min(330px,82vw);gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:24px;padding-bottom:14px;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
+.track:focus-visible,.car-nav button:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+.at{scroll-snap-align:start;background:#ffffff0a;border:1px solid #ffffff1a}
+.at .img{height:150px;display:flex;align-items:flex-end;padding:12px 16px;font:500 10px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);background:linear-gradient(to top,#2b0a14f0,#2b0a1440) center/cover,linear-gradient(135deg,#8c6e66,#5d4b52)}
+.at:nth-child(3n+2) .img{background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),linear-gradient(160deg,#7b6a74,#41303a)}
+.at:nth-child(3n) .img{background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),linear-gradient(120deg,#b08a5a,#7a4a3a)}
+.at .bd{padding:22px}
+.at h3{font-size:22px;color:#f1e6d8;margin-bottom:12px}
+.at p,.at li{font-size:13px;color:#d4bfb4;margin:0 0 10px}
+.at h4{font:500 10px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin:18px 0 8px}
+.at ul{margin:0;padding-left:18px}
+.at b{color:#f1e6d8;font-weight:600}
 .card{background:var(--card);border:1px solid var(--line)}
 .card .img{height:150px;display:flex;align-items:flex-end;justify-content:space-between;padding:10px 12px;font:500 11px var(--ui);color:#fff}
 .card .bd{padding:20px}

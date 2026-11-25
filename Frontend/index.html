@@ -20,8 +20,7 @@
   <p class="eyebrow">Valle de Casablanca · Chile</p>
   <h1>Tierra de <em>vino</em> y memoria</h1>
   <p class="s">A 67 km de Santiago, donde la neblina marina moldea varietales únicos y el patrimonio colonial convive con la viticultura de clase mundial.</p>
-  <!-- La ruta del Casco Histórico empieza por la microencuesta (encuesta.html), que guarda el perfil y abre ruta.html con el mapa y los QR -->
-  <a class="btn g" href="#vino">Explorar la Ruta del Vino</a><a class="btn o" href="encuesta.html">Ruta del Casco Histórico</a>
+  <a class="btn g" href="#vino">Explorar la Ruta del Vino</a><a class="btn o" href="#patrimonio">Patrimonio histórico</a>
 </header>
 <div class="stats">
   <div><b>+14</b>viñas en la ruta</div><div><b>8</b>sitios patrimoniales</div><div><b>22</b>alojamientos</div>
@@ -44,6 +43,87 @@
     <div class="ph p1"><small>Siglo XIX</small><h3>Iglesia Parroquial de Casablanca</h3><p>Templo neoclásico que domina la Plaza de Armas. Patrimonio arquitectónico de la región de Valparaíso.</p></div>
     <div class="ph p2"><small>Fundación 1753</small><h3>Plaza de Armas</h3></div>
     <div class="ph p3"><small>Rutas coloniales</small><h3>Casco histórico</h3></div>
+  </div>
+
+  <!-- Carrusel de atracciones: desplazamiento nativo con scroll-snap; las flechas se manejan en js/frontis.js.
+       FOTOS: cada .img usa un degradado provisorio; para poner una foto agrega en el div
+       style="background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(assets/img/atraccion-01.jpg)" (y así con cada número) -->
+  <div class="carrusel" role="region" aria-roledescription="carrusel" aria-label="Atracciones del casco histórico">
+    <div class="car-head">
+      <div><small>12 atracciones</small><h3>Recorre el casco histórico</h3></div>
+      <div class="car-nav"><button type="button" data-dir="-1" aria-label="Atracción anterior">←</button><button type="button" data-dir="1" aria-label="Atracción siguiente">→</button></div>
+    </div>
+    <div class="track" id="track" tabindex="0">
+      <article class="at"><div class="img">Atracción 01</div><div class="bd">
+        <h3>Faro – Farol – El Control</h3>
+        <p>Inaugurado en 1930 en honor al presidente Carlos Ibáñez del Campo, marcaba el inicio del camino a Valparaíso. Fue construido por Tomás Stiglich Vera como símbolo de la conexión Santiago–Valparaíso.</p>
+        <p>Tras la caída de Ibáñez, el monolito fue destruido durante una manifestación social.</p>
+        <p>La esquina de Buin con Constitución es conocida como “El Control”, porque en los años 50 se instaló allí un puesto de Carabineros para vigilar la carga que competía con el transporte ferroviario.</p>
+        <h4>Calle Chapito</h4>
+        <p>Antiguamente era el límite urbano de Casablanca. Entre zarzamoras, era un sitio de encuentros amorosos donde muchas veces quedaban “trapitos” abandonados, lo que dio origen a su primer nombre: Calle de los Trapitos. Con el tiempo, se transformó en Calle Chapito.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 02</div><div class="bd">
+        <h3>Plaza Bicentenario (Las Lagunas)</h3>
+        <p>Originalmente un terreno con napas de agua, fue renombrada en 1953 con motivo del bicentenario comunal.</p>
+        <p>Aquí se entregaron terrenos para la Plaza Obrera, donde las casas fueron construidas con esquinas ochavadas. Hoy es un lugar de trabajo comunitario y cultura autogestionada.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 03</div><div class="bd">
+        <h3>Casa de Presidente Montt</h3>
+        <p>Residencia del expresidente Jorge Montt Álvarez (1891–1896), héroe de la Guerra Civil de 1891 y parte de la generación de los héroes junto a Arturo Prat y Carlos Condell.</p>
+        <p>Más tarde, aquí funcionó el recordado prostíbulo “El Dragón Rojo”.</p>
+        <h4>Explanada Fomento Productivo</h4>
+        <p>En esta zona destacan las casas construidas en quincha, técnica tradicional que otorga resistencia sísmica y forma parte del sello arquitectónico del casco histórico.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 04</div><div class="bd">
+        <h3>Casa de Alejandro Galaz</h3>
+        <p>Hogar del poeta y cronista casablanquino, conocido por su bohemia y sus escritos en <em>La Estrella</em> y <em>El Mercurio</em> de Valparaíso. Entre sus poemas destaca “Trompito 7 Colores”.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 05</div><div class="bd">
+        <h3>Almacén Don Lalo</h3>
+        <p>Fundado en 1885 por el inmigrante español Valentín Cangas del Collado, este histórico almacén abarcaba hasta donde hoy está el BancoEstado.</p>
+        <p>Actualmente, su propietario comparte la historia familiar y ofrece degustación de chicha.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 06</div><div class="bd">
+        <h3>Casa de Julio Montt Salamanca</h3>
+        <p>Residencia de estilo neoclásico del héroe de la Batalla de la Concepción (1882). Refleja el auge agrícola y comercial de Casablanca a fines del siglo XIX.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 07</div><div class="bd">
+        <h3>Cooperativa Agrícola</h3>
+        <p>Casona del siglo XIX que en los años 40 albergó la Cooperativa Agrícola y Lechera de Casablanca, clave en el desarrollo productivo local. Reunía a pequeños y medianos agricultores, fomentando la economía rural y el trabajo colaborativo.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 08</div><div class="bd">
+        <h3>Plaza de Armas de Casablanca</h3>
+        <p>Desde 1796, conserva su trazado bajo la gestión de Ambrosio O'Higgins. Por aquí pasaba el Camino Real, ruta entre Santiago y Valparaíso.</p>
+        <p>A principios del siglo XX estaba cerrada con rejas, tenía una pérgola central y era escenario de conciertos de la banda municipal.</p>
+        <p>Hoy mantiene especies nativas como la Palma chilena, la más austral del mundo.</p>
+        <h4>Monumentos y espacios asociados</h4>
+        <ul>
+          <li><b>Estatua Julio Montt Salamanca (1982):</b> Héroe de la Batalla de la Concepción.</li>
+          <li><b>Estatua Arturo Prat y placa de José Jesús Hernández (2017):</b> Homenaje al joven grumete casablanquino caído en el Combate Naval de Iquique.</li>
+          <li><b>Cárcel:</b> Una de las pocas comunas en Chile con cárcel en la plaza central.</li>
+          <li><b>Obelisco Alejandro Galaz (1952):</b> Monumento al poeta casablanquino.</li>
+          <li><b>Pileta:</b> Elemento central que ha cambiado varias veces de diseño.</li>
+          <li><b>Piedra conmemorativa Luis López Méndez (1971):</b> Prócer venezolano y educador, amigo de O'Higgins, Bolívar y San Martín.</li>
+          <li><b>Estatua Padre Hurtado (2000):</b> Homenaje al fundador del Hogar de Cristo, que vivió en Casablanca hasta los 4 años.</li>
+        </ul>
+      </div></article>
+      <article class="at"><div class="img">Atracción 09</div><div class="bd">
+        <h3>1° Compañía de Bomberos</h3>
+        <p>El 8 de noviembre de 1947, un incendio destruyó el querido Teatro Lux. La tragedia impulsó a los vecinos a organizarse y fundar, en 1949, la Primera Compañía de Bomberos de Casablanca, con apoyo de voluntarios de Valparaíso.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 10</div><div class="bd">
+        <h3>I. Municipalidad de Casablanca</h3>
+        <p>Creada en 1827, actual edificio inaugurado en 1945 bajo Arturo Echazarreta.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 11</div><div class="bd">
+        <h3>Parroquia Santa Bárbara</h3>
+        <p>Más antigua que la ciudad misma; destruida por el terremoto de 1906 y reconstruida en 1913.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 12</div><div class="bd">
+        <h3>Centro Cultural – Museo – Teatro</h3>
+        <p>Creado en 1987, reúne el Teatro Municipal, el Museo Arqueológico y Antropológico y la Biblioteca Pública Alejandro Galaz, consolidándose como el corazón cultural de la comuna.</p>
+      </div></article>
+    </div>
   </div>
 </section>
 

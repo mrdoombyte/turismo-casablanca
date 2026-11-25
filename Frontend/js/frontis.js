@@ -22,3 +22,9 @@ W.forEach(function(w,i){
   b.onclick=function(){show(i)};tabs.appendChild(b);
 });
 show(0);
+
+// Flechas del carrusel de atracciones: avanzan una tarjeta (ancho + separación de 22px).
+var track=document.getElementById("track");
+Array.prototype.forEach.call(document.querySelectorAll(".car-nav button"),function(b){
+  b.onclick=function(){track.scrollBy({left:b.dataset.dir*(track.firstElementChild.offsetWidth+22),behavior:"smooth"})};
+});
