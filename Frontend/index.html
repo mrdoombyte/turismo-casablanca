@@ -1,868 +1,179 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Casablanca · Guía local</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:ital@0;1&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg: #f2f3e9;
-        --ink: #183c2b;
-        --ink-2: #294b35;
-        --green: #527a43;
-        --green-soft: #668d53;
-        --muted: #617565;
-        --line: #cbd6c5;
-        --field: rgba(255, 255, 255, 0.42);
-        --error: #a8432f;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--ink);
-        font-family: "DM Sans", system-ui, sans-serif;
-      }
-      .page {
-        max-width: 1017px;
-        margin: 0 auto;
-        padding: 24px 40px;
-      }
-      header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 48px;
-      }
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-family: "Playfair Display", serif;
-        font-size: 20px;
-        letter-spacing: 0.03em;
-      }
-      .logo {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        border: 1px solid rgba(24, 60, 43, 0.25);
-        display: grid;
-        place-items: center;
-      }
-      .tag {
-        color: #658451;
-        font-size: 12px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.22em;
-      }
-      main {
-        max-width: 620px;
-      }
-      .eyebrow {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: #668850;
-        font-size: 12px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-      }
-      .eyebrow::before {
-        content: "";
-        width: 32px;
-        height: 1px;
-        background: #668850;
-      }
-      h1 {
-        font-family: "Playfair Display", serif;
-        font-weight: 400;
-        font-size: clamp(2.2rem, 6vw, 3.2rem);
-        line-height: 1;
-        margin: 20px 0 0;
-        color: #173d2a;
-      }
-      h1 em {
-        color: var(--green-soft);
-      }
-      .lead {
-        max-width: 512px;
-        color: #627565;
-        font-size: 15px;
-        line-height: 28px;
-        margin: 20px 0;
-      }
-      .origin {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 16px;
-        border: 1px solid #c5d4bf;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.55);
-        color: #42633f;
-        font-size: 12px;
-        font-weight: 600;
-      }
-      .origin::before {
-        content: "";
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--green-soft);
-      }
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Municipalidad de Casablanca · Portal de Turismo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital@0;1&family=Outfit:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/frontis.css">
+</head>
+<body>
+<nav>
+  <a class="logo" href="#top"><i>CB</i><span>Municipalidad de<b>Casablanca</b></span></a>
+  <ul>
+    <li><a class="l" href="#vino">Ruta del Vino</a></li><li><a class="l" href="#patrimonio">Patrimonio</a></li>
+    <li><a class="l" href="#gastronomia">Gastronomía</a></li><li><a class="l" href="#hospedaje">Hospedaje</a></li><li><a class="l" href="#info">Información</a></li>
+  </ul>
+</nav>
 
-      form {
-        padding: 36px 0 40px;
-      }
-      .row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        margin-bottom: 28px;
-      }
-      .field {
-        display: flex;
-        flex-direction: column;
-        flex: 1 1 240px;
-      }
-      .field.narrow {
-        flex: 0 0 120px;
-      }
-      label,
-      legend {
-        color: var(--ink-2);
-        font-size: 13px;
-        font-weight: 600;
-        line-height: 19.5px;
-        padding: 0;
-      }
-      label.lbl {
-        margin-bottom: 8px;
-      }
-      .control {
-        position: relative;
-      }
-      input[type="text"],
-      input[type="email"],
-      input[type="number"] {
-        width: 100%;
-        height: 49px;
-        padding: 13px 15px;
-        font:
-          400 14px "DM Sans",
-          sans-serif;
-        color: var(--ink);
-        background: var(--field);
-        border: 1px solid var(--line);
-        border-radius: 12px;
-      }
-      input::placeholder {
-        color: #9aa2a3;
-      }
-      .control.icon input {
-        padding-left: 44px;
-      }
-      .control svg {
-        position: absolute;
-        left: 16px;
-        top: 16.5px;
-        width: 16px;
-        height: 16px;
-        stroke: #89979c;
-        fill: none;
-        stroke-width: 1.2;
-      }
-      input[type="number"] {
-        appearance: textfield;
-        -moz-appearance: textfield;
-      }
-      input[type="number"]::-webkit-inner-spin-button {
-        display: none;
-      }
-      :focus-visible {
-        outline: 2px solid var(--green);
-        outline-offset: 2px;
-      }
-      .invalid {
-        border-color: var(--error) !important;
-      }
-      .msg {
-        color: var(--error);
-        font-size: 12px;
-        min-height: 16px;
-        margin-top: 4px;
-      }
+<header class="hero" id="top">
+  <p class="eyebrow">Valle de Casablanca · Chile</p>
+  <h1>Tierra de <em>vino</em> y memoria</h1>
+  <p class="s">A 67 km de Santiago, donde la neblina marina moldea varietales únicos y el patrimonio colonial convive con la viticultura de clase mundial.</p>
+  <a class="btn g" href="#vino">Explorar la Ruta del Vino</a><a class="btn o" href="#patrimonio">Patrimonio histórico</a>
+</header>
+<div class="stats">
+  <div><b>+14</b>viñas en la ruta</div><div><b>8</b>sitios patrimoniales</div><div><b>22</b>alojamientos</div>
+</div>
 
-      [hidden] {
-        display: none !important;
-      }
-      .companions {
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.4);
-        border: 1px solid #ccd7c6;
-        border-radius: 16px;
-        margin-bottom: 28px;
-      }
-      .comp-head {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-      }
-      .comp-fields {
-        margin-top: 20px;
-        padding-top: 20px;
-        border-top: 1px solid #ccd7c6;
-      }
-      .comp-fields .row {
-        margin-bottom: 0;
-      }
-      .comp-range {
-        margin-top: 20px;
-      }
-      .comp-range fieldset {
-        margin: 0;
-      }
-      .chip small {
-        font-size: 12px;
-        opacity: 0.75;
-        align-self: center;
-      }
-      .seg {
-        display: flex;
-        padding: 4px;
-        background: #dfe7da;
-        border-radius: 999px;
-      }
-      .seg input {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-      }
-      .seg label {
-        padding: 8px 24px;
-        border-radius: 999px;
-        color: var(--muted);
-        font-size: 16px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        cursor: pointer;
-        font-weight: 400;
-        line-height: 24px;
-        transition:
-          background 0.2s,
-          color 0.2s;
-      }
-      .seg input:checked + label {
-        background: #315b37;
-        color: #fff;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      }
-      .seg input:focus-visible + label {
-        outline: 2px solid var(--green);
-        outline-offset: 2px;
-      }
+<section id="vino">
+  <p class="eyebrow">Enoturismo</p>
+  <h2>La Ruta del Vino<br><em>de Casablanca</em></h2>
+  <p class="lead">El Valle de Casablanca produce algunos de los Sauvignon Blanc y Pinot Noir más reconocidos del mundo. La brisa del Pacífico y las mañanas con niebla crean condiciones únicas para varietales de clima frío.</p>
+  <!-- Panel y pestañas se generan en js/frontis.js -->
+  <div class="panel" id="panel"></div>
+  <div class="tabs" id="tabs"></div>
+</section>
 
-      fieldset {
-        border: 0;
-        margin: 0 0 6px;
-        padding: 0;
-        min-width: 0;
-      }
-      .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 12px;
-      }
-      .chip input {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-      }
-      .chip label {
-        display: inline-flex;
-        gap: 6px;
-        padding: 10px 16px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.45);
-        color: #526b58;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
-        cursor: pointer;
-        transition:
-          background 0.2s,
-          color 0.2s;
-      }
-      .chip input:checked + label {
-        background: var(--green);
-        border-color: var(--green);
-        color: #fff;
-      }
-      .chip input:checked + label::before {
-        content: "✓";
-      }
-      .chip input:focus-visible + label {
-        outline: 2px solid var(--green);
-        outline-offset: 2px;
-      }
-      .hint {
-        color: #708273;
-        font-size: 12px;
-        margin: 6px 0 0;
-      }
+<!-- FOTOS: los fondos de .p1/.p2/.p3 y de las tarjetas (.a1-.a3, .h1-.h3) son degradados provisorios; ver css/frontis.css para cambiarlos por imágenes de assets/img/ -->
+<section class="dark" id="patrimonio">
+  <p class="eyebrow">Cultura &amp; Historia</p>
+  <h2>Patrimonio vivo<br><em>desde 1753</em></h2>
+  <div class="grid">
+    <div class="ph p1"><small>Siglo XIX</small><h3>Iglesia Parroquial de Casablanca</h3><p>Templo neoclásico que domina la Plaza de Armas. Patrimonio arquitectónico de la región de Valparaíso.</p></div>
+    <div class="ph p2"><small>Fundación 1753</small><h3>Plaza de Armas</h3></div>
+    <div class="ph p3"><small>Rutas coloniales</small><h3>Casco histórico</h3></div>
+  </div>
 
-      .consent {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-        margin: 28px 0;
-        color: var(--muted);
-        font-size: 14px;
-        line-height: 24px;
-        font-weight: 400;
-      }
-      .consent input {
-        width: 16px;
-        height: 16px;
-        margin-top: 4px;
-        accent-color: var(--green);
-      }
-
-      .submit {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 16px 24px;
-        background: var(--green);
-        color: #fff;
-        border: 0;
-        border-radius: 999px;
-        font:
-          400 16px "DM Sans",
-          sans-serif;
-        box-shadow: 0 12px 30px rgba(50, 91, 55, 0.2);
-        cursor: pointer;
-        transition: filter 0.2s;
-      }
-      .submit:hover {
-        filter: brightness(1.08);
-      }
-      .submit .arrow {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.15);
-        display: grid;
-        place-items: center;
-      }
-      .submit svg {
-        width: 20px;
-        height: 20px;
-        stroke: #fff;
-        fill: none;
-        stroke-width: 1.5;
-      }
-      .privacy {
-        text-align: center;
-        color: #7c8b7d;
-        font-size: 11px;
-        line-height: 20px;
-        margin-top: 28px;
-      }
-
-      .done {
-        display: none;
-        padding: 36px 0;
-      }
-      .done h2 {
-        font-family: "Playfair Display", serif;
-        font-weight: 400;
-        font-size: 2rem;
-        margin: 0 0 12px;
-      }
-      .done p {
-        color: var(--muted);
-        line-height: 1.7;
-      }
-      .done button {
-        margin-top: 16px;
-        padding: 12px 24px;
-        border-radius: 999px;
-        border: 1px solid var(--green);
-        background: transparent;
-        color: var(--green);
-        font:
-          600 14px "DM Sans",
-          sans-serif;
-        cursor: pointer;
-      }
-
-      @media (max-width: 640px) {
-        .page {
-          padding: 16px 20px;
-        }
-        header {
-          padding-bottom: 28px;
-        }
-        .field.narrow {
-          flex-basis: 100%;
-        }
-        .comp-head {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page">
-      <header>
-        <div class="brand">
-          <span class="logo" aria-hidden="true">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              stroke="#183C2B"
-              stroke-width="1.5"
-            >
-              <rect x="3.3" y="2.5" width="13.3" height="14.2" />
-              <rect x="7" y="10.8" width="5.8" height="1.7" />
-            </svg>
-          </span>
-          Casablanca
-        </div>
-        <span class="tag">Guía local</span>
-      </header>
-
-      <main>
-        <div id="intro">
-          <div class="eyebrow">Antes de comenzar</div>
-          <h1>Tu viaje empieza<br /><em>aquí.</em></h1>
-          <p class="lead">
-            Cuéntanos un poco sobre ti para recomendarte viñas, sabores y
-            rincones del Valle de Casablanca que encajen con tu forma de viajar.
-          </p>
-          <span class="origin">Inicias desde Plaza de Armas de Casablanca</span>
-
-          <form id="form" novalidate>
-            <div class="row">
-              <div class="field">
-                <label class="lbl" for="nombre">Nombre completo</label>
-                <input
-                  type="text"
-                  id="nombre"
-                  name="nombre"
-                  placeholder="¿Cómo te llamas?"
-                  autocomplete="name"
-                  required
-                />
-                <div class="msg" data-for="nombre"></div>
-              </div>
-              <div class="field narrow">
-                <label class="lbl" for="edad">Edad</label>
-                <input
-                  type="number"
-                  id="edad"
-                  name="edad"
-                  placeholder="28"
-                  min="1"
-                  max="120"
-                  inputmode="numeric"
-                />
-                <div class="msg" data-for="edad"></div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="field">
-                <label class="lbl" for="origen"
-                  >¿Desde dónde nos visitas?</label
-                >
-                <div class="control icon">
-                  <svg viewBox="0 0 16 16" aria-hidden="true">
-                    <circle cx="8" cy="8" r="6" />
-                    <path d="M2 8h12M8 2c2 2 2 10 0 12M8 2c-2 2-2 10 0 12" />
-                  </svg>
-                  <input
-                    type="text"
-                    id="origen"
-                    name="origen"
-                    placeholder="Ciudad, país"
-                    autocomplete="address-level2"
-                  />
-                </div>
-              </div>
-              <div class="field">
-                <label class="lbl" for="correo">Correo electrónico</label>
-                <div class="control icon">
-                  <svg viewBox="0 0 16 16" aria-hidden="true">
-                    <rect x="2" y="3.3" width="12" height="9.3" rx="1" />
-                    <path d="M2 4.7l6 4 6-4" />
-                  </svg>
-                  <input
-                    type="email"
-                    id="correo"
-                    name="correo"
-                    placeholder="nombre@correo.com"
-                    autocomplete="email"
-                    required
-                  />
-                </div>
-                <div class="msg" data-for="correo"></div>
-              </div>
-            </div>
-
-            <div class="companions">
-              <div
-                class="comp-head"
-                role="radiogroup"
-                aria-labelledby="acomp-label"
-              >
-                <span
-                  id="acomp-label"
-                  style="font-size: 13px; font-weight: 600; color: var(--ink-2)"
-                  >¿Viajas con acompañantes?</span
-                >
-                <div class="seg">
-                  <input
-                    type="radio"
-                    name="acompanantes"
-                    id="acomp-no"
-                    value="no"
-                    checked
-                  />
-                  <label for="acomp-no">No</label>
-                  <input
-                    type="radio"
-                    name="acompanantes"
-                    id="acomp-si"
-                    value="si"
-                  />
-                  <label for="acomp-si">Sí</label>
-                </div>
-              </div>
-
-              <div class="comp-fields" id="acomp-fields" hidden>
-                <div class="row">
-                  <div class="field">
-                    <label class="lbl" for="total"
-                      >¿Cuántos son en total?</label
-                    >
-                    <input
-                      type="number"
-                      id="total"
-                      name="total"
-                      value="2"
-                      min="2"
-                      max="50"
-                      inputmode="numeric"
-                    />
-                    <div class="msg" data-for="total"></div>
-                  </div>
-                  <div class="field">
-                    <label class="lbl" for="menores"
-                      >¿Cuántos son menores?</label
-                    >
-                    <input
-                      type="number"
-                      id="menores"
-                      name="menores"
-                      value="0"
-                      min="0"
-                      max="49"
-                      inputmode="numeric"
-                    />
-                    <div class="msg" data-for="menores"></div>
-                  </div>
-                </div>
-
-                <div class="comp-range" id="rango-menores" hidden>
-                  <fieldset>
-                    <legend>Rango de edad entre los menores</legend>
-                    <div class="chips">
-                      <div class="chip">
-                        <input
-                          type="checkbox"
-                          id="r1"
-                          name="rango"
-                          value="bebes"
-                        /><label for="r1"
-                          >Bebés <small>0 meses a 2 años</small></label
-                        >
-                      </div>
-                      <div class="chip">
-                        <input
-                          type="checkbox"
-                          id="r2"
-                          name="rango"
-                          value="preadolescentes"
-                        /><label for="r2"
-                          >Preadolescentes <small>3 a 12 años</small></label
-                        >
-                      </div>
-                      <div class="chip">
-                        <input
-                          type="checkbox"
-                          id="r3"
-                          name="rango"
-                          value="adolescentes"
-                        /><label for="r3"
-                          >Adolescentes <small>13 a 17 años</small></label
-                        >
-                      </div>
-                    </div>
-                    <p class="hint">Elige todos los rangos que apliquen.</p>
-                    <div class="msg" data-for="rango"></div>
-                  </fieldset>
-                </div>
-              </div>
-            </div>
-
-            <fieldset>
-              <legend>¿Qué te interesa descubrir?</legend>
-              <div class="chips">
-                <div class="chip">
-                  <input
-                    type="checkbox"
-                    id="i1"
-                    name="intereses"
-                    value="vinas"
-                    checked
-                  /><label for="i1">Viñas y degustaciones</label>
-                </div>
-                <div class="chip">
-                  <input
-                    type="checkbox"
-                    id="i2"
-                    name="intereses"
-                    value="gastronomia"
-                  /><label for="i2">Gastronomía</label>
-                </div>
-                <div class="chip">
-                  <input
-                    type="checkbox"
-                    id="i3"
-                    name="intereses"
-                    value="naturaleza"
-                  /><label for="i3">Naturaleza</label>
-                </div>
-                <div class="chip">
-                  <input
-                    type="checkbox"
-                    id="i4"
-                    name="intereses"
-                    value="cultura"
-                  /><label for="i4">Cultura local</label>
-                </div>
-                <div class="chip">
-                  <input
-                    type="checkbox"
-                    id="i5"
-                    name="intereses"
-                    value="familia"
-                  /><label for="i5">Actividades familiares</label>
-                </div>
-                <div class="chip">
-                  <input
-                    type="checkbox"
-                    id="i6"
-                    name="intereses"
-                    value="ciclismo"
-                  /><label for="i6">Ciclismo</label>
-                </div>
-              </div>
-              <p class="hint">Elige una o varias opciones.</p>
-              <div class="msg" data-for="intereses"></div>
-            </fieldset>
-
-            <label class="consent" for="consent">
-              <input type="checkbox" id="consent" name="consent" />
-              Autorizo recibir novedades, recomendaciones y noticias de
-              Casablanca, Chile en mi correo.
-            </label>
-
-            <button type="submit" class="submit">
-              Crear mi guía personalizada
-              <span class="arrow"
-                ><svg viewBox="0 0 20 20" aria-hidden="true">
-                  <path d="M4 10h12M11 5l5 5-5 5" /></svg
-              ></span>
-            </button>
-            <p class="privacy">
-              Tus datos se usan únicamente para personalizar tu experiencia.
-            </p>
-          </form>
-        </div>
-
-        <section class="done" id="done" aria-live="polite">
-          <h2>¡Gracias, <span id="done-name"></span>!</h2>
-          <p id="done-text"></p>
-          <button type="button" id="reset">Volver al formulario</button>
-        </section>
-      </main>
+  <!-- Carrusel de atracciones: desplazamiento nativo con scroll-snap; las flechas se manejan en js/frontis.js.
+       FOTOS: cada .img usa un degradado provisorio; para poner una foto agrega en el div
+       style="background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(assets/img/atraccion-01.jpg)" (y así con cada número) -->
+  <div class="carrusel" role="region" aria-roledescription="carrusel" aria-label="Atracciones del casco histórico">
+    <div class="car-head">
+      <div><small>12 atracciones</small><h3>Recorre el casco histórico</h3></div>
+      <div class="car-nav"><button type="button" data-dir="-1" aria-label="Atracción anterior">←</button><button type="button" data-dir="1" aria-label="Atracción siguiente">→</button></div>
     </div>
+    <div class="track" id="track" tabindex="0">
+      <article class="at"><div class="img">Atracción 01</div><div class="bd">
+        <h3>Faro – Farol – El Control</h3>
+        <p>Inaugurado en 1930 en honor al presidente Carlos Ibáñez del Campo, marcaba el inicio del camino a Valparaíso. Fue construido por Tomás Stiglich Vera como símbolo de la conexión Santiago–Valparaíso.</p>
+        <p>Tras la caída de Ibáñez, el monolito fue destruido durante una manifestación social.</p>
+        <p>La esquina de Buin con Constitución es conocida como “El Control”, porque en los años 50 se instaló allí un puesto de Carabineros para vigilar la carga que competía con el transporte ferroviario.</p>
+        <h4>Calle Chapito</h4>
+        <p>Antiguamente era el límite urbano de Casablanca. Entre zarzamoras, era un sitio de encuentros amorosos donde muchas veces quedaban “trapitos” abandonados, lo que dio origen a su primer nombre: Calle de los Trapitos. Con el tiempo, se transformó en Calle Chapito.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 02</div><div class="bd">
+        <h3>Plaza Bicentenario (Las Lagunas)</h3>
+        <p>Originalmente un terreno con napas de agua, fue renombrada en 1953 con motivo del bicentenario comunal.</p>
+        <p>Aquí se entregaron terrenos para la Plaza Obrera, donde las casas fueron construidas con esquinas ochavadas. Hoy es un lugar de trabajo comunitario y cultura autogestionada.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 03</div><div class="bd">
+        <h3>Casa de Presidente Montt</h3>
+        <p>Residencia del expresidente Jorge Montt Álvarez (1891–1896), héroe de la Guerra Civil de 1891 y parte de la generación de los héroes junto a Arturo Prat y Carlos Condell.</p>
+        <p>Más tarde, aquí funcionó el recordado prostíbulo “El Dragón Rojo”.</p>
+        <h4>Explanada Fomento Productivo</h4>
+        <p>En esta zona destacan las casas construidas en quincha, técnica tradicional que otorga resistencia sísmica y forma parte del sello arquitectónico del casco histórico.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 04</div><div class="bd">
+        <h3>Casa de Alejandro Galaz</h3>
+        <p>Hogar del poeta y cronista casablanquino, conocido por su bohemia y sus escritos en <em>La Estrella</em> y <em>El Mercurio</em> de Valparaíso. Entre sus poemas destaca “Trompito 7 Colores”.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 05</div><div class="bd">
+        <h3>Almacén Don Lalo</h3>
+        <p>Fundado en 1885 por el inmigrante español Valentín Cangas del Collado, este histórico almacén abarcaba hasta donde hoy está el BancoEstado.</p>
+        <p>Actualmente, su propietario comparte la historia familiar y ofrece degustación de chicha.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 06</div><div class="bd">
+        <h3>Casa de Julio Montt Salamanca</h3>
+        <p>Residencia de estilo neoclásico del héroe de la Batalla de la Concepción (1882). Refleja el auge agrícola y comercial de Casablanca a fines del siglo XIX.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 07</div><div class="bd">
+        <h3>Cooperativa Agrícola</h3>
+        <p>Casona del siglo XIX que en los años 40 albergó la Cooperativa Agrícola y Lechera de Casablanca, clave en el desarrollo productivo local. Reunía a pequeños y medianos agricultores, fomentando la economía rural y el trabajo colaborativo.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 08</div><div class="bd">
+        <h3>Plaza de Armas de Casablanca</h3>
+        <p>Desde 1796, conserva su trazado bajo la gestión de Ambrosio O'Higgins. Por aquí pasaba el Camino Real, ruta entre Santiago y Valparaíso.</p>
+        <p>A principios del siglo XX estaba cerrada con rejas, tenía una pérgola central y era escenario de conciertos de la banda municipal.</p>
+        <p>Hoy mantiene especies nativas como la Palma chilena, la más austral del mundo.</p>
+        <h4>Monumentos y espacios asociados</h4>
+        <ul>
+          <li><b>Estatua Julio Montt Salamanca (1982):</b> Héroe de la Batalla de la Concepción.</li>
+          <li><b>Estatua Arturo Prat y placa de José Jesús Hernández (2017):</b> Homenaje al joven grumete casablanquino caído en el Combate Naval de Iquique.</li>
+          <li><b>Cárcel:</b> Una de las pocas comunas en Chile con cárcel en la plaza central.</li>
+          <li><b>Obelisco Alejandro Galaz (1952):</b> Monumento al poeta casablanquino.</li>
+          <li><b>Pileta:</b> Elemento central que ha cambiado varias veces de diseño.</li>
+          <li><b>Piedra conmemorativa Luis López Méndez (1971):</b> Prócer venezolano y educador, amigo de O'Higgins, Bolívar y San Martín.</li>
+          <li><b>Estatua Padre Hurtado (2000):</b> Homenaje al fundador del Hogar de Cristo, que vivió en Casablanca hasta los 4 años.</li>
+        </ul>
+      </div></article>
+      <article class="at"><div class="img">Atracción 09</div><div class="bd">
+        <h3>1° Compañía de Bomberos</h3>
+        <p>El 8 de noviembre de 1947, un incendio destruyó el querido Teatro Lux. La tragedia impulsó a los vecinos a organizarse y fundar, en 1949, la Primera Compañía de Bomberos de Casablanca, con apoyo de voluntarios de Valparaíso.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 10</div><div class="bd">
+        <h3>I. Municipalidad de Casablanca</h3>
+        <p>Creada en 1827, actual edificio inaugurado en 1945 bajo Arturo Echazarreta.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 11</div><div class="bd">
+        <h3>Parroquia Santa Bárbara</h3>
+        <p>Más antigua que la ciudad misma; destruida por el terremoto de 1906 y reconstruida en 1913.</p>
+      </div></article>
+      <article class="at"><div class="img">Atracción 12</div><div class="bd">
+        <h3>Centro Cultural – Museo – Teatro</h3>
+        <p>Creado en 1987, reúne el Teatro Municipal, el Museo Arqueológico y Antropológico y la Biblioteca Pública Alejandro Galaz, consolidándose como el corazón cultural de la comuna.</p>
+      </div></article>
+    </div>
+  </div>
+</section>
 
-    <script>
-      const RUTA_URL = "ruta.html"; // página de la ruta (misma carpeta)
-      const form = document.getElementById("form");
-      const intro = document.getElementById("intro");
-      const done = document.getElementById("done");
+<section id="gastronomia">
+  <p class="eyebrow">Gastronomía local</p>
+  <h2>Sabores del valle</h2>
+  <div class="grid">
+    <div class="card"><div class="img a1"><span class="t">Cocina chilena tradicional</span></div><div class="bd"><h3>La Casona de Doña Berta</h3><p>Lun–Dom 12:00–16:00</p><p>+56 32 2741 011</p></div></div>
+    <div class="card"><div class="img a2"><span class="t">Parrilla &amp; maridaje</span></div><div class="bd"><h3>Taberna del Valle</h3><p>Jue–Dom 13:00–22:00</p><p>+56 32 2742 388</p></div></div>
+    <div class="card"><div class="img a3"><span class="t">Feria gastronómica · Sábados</span></div><div class="bd"><h3>Mercado Campesino</h3><p>Sáb 9:00–14:00 · Plaza de Armas</p><p>Sin reserva</p></div></div>
+  </div>
+</section>
 
-      // Acompañantes: mostrar campos al elegir SÍ, y rango de edad si hay menores
-      const acompFields = document.getElementById("acomp-fields");
-      const rangoBox = document.getElementById("rango-menores");
-      const menoresIn = form.elements["menores"];
-      const syncMinors = () => {
-        const n = parseInt(menoresIn.value, 10) || 0;
-        rangoBox.hidden = n < 1;
-        if (n < 1)
-          form
-            .querySelectorAll('input[name="rango"]')
-            .forEach((c) => (c.checked = false));
-      };
-      const syncCompanions = () => {
-        acompFields.hidden = form.elements["acompanantes"].value !== "si";
-        syncMinors();
-      };
-      form
-        .querySelectorAll('input[name="acompanantes"]')
-        .forEach((r) => r.addEventListener("change", syncCompanions));
-      menoresIn.addEventListener("input", syncMinors);
+<section class="sand" id="hospedaje">
+  <p class="eyebrow">Hospedaje</p>
+  <h2>Dónde quedarse<br><em>en Casablanca</em></h2>
+  <!-- TODO: los botones "Consultar" y "Reservar visita" llevan a #info; no existe endpoint de reservas en el backend -->
+  <div class="grid">
+    <div class="card"><div class="img h1"><span class="t">Boutique · 4 estrellas</span><b>$95.000</b></div><div class="bd"><h3>Casa Patronal Casablanca</h3><p>Orrego Luco 188</p><p>+56 32 2741 540</p><div><span class="chip">Desayuno incluido</span><span class="chip">Jardín</span><span class="chip">Sala de cata</span></div><br><a class="btn w" href="#info">Consultar</a></div></div>
+    <div class="card"><div class="img h2"><span class="t">Agroturismo · 3 estrellas</span><b>$65.000</b></div><div class="bd"><h3>Posada Entre Viñedos</h3><p>Ruta 68, km 62</p><p>+56 32 2742 190</p><div><span class="chip">Vista al viñedo</span><span class="chip">WiFi</span><span class="chip">Bicicletas</span></div><br><a class="btn w" href="#info">Consultar</a></div></div>
+    <div class="card"><div class="img h3"><span class="t">Apart hotel · 3 estrellas</span><b>$58.000</b></div><div class="bd"><h3>Apart Hotel Arrayán</h3><p>Los Boldos 45</p><p>+56 32 2741 874</p><div><span class="chip">Cocina equipada</span><span class="chip">Estacionamiento</span><span class="chip">Pet friendly</span></div><br><a class="btn w" href="#info">Consultar</a></div></div>
+  </div>
+</section>
 
-      const setError = (name, text) => {
-        const msg = form.querySelector(`.msg[data-for="${name}"]`);
-        const input = form.elements[name];
-        if (msg) msg.textContent = text;
-        if (input && input.classList) input.classList.toggle("invalid", !!text);
-      };
+<section class="cta">
+  <h2>¿Tienes un negocio turístico <em>en Casablanca?</em></h2>
+  <p>Regístralo en el directorio oficial de la Municipalidad. Aparece en esta vitrina, llega a más visitantes y fortalece el turismo local. El registro es gratuito.</p>
+  <!-- TODO: "Registrar mi establecimiento" apunta a #info; falta el formulario/endpoint de registro de negocios -->
+  <a class="btn g" href="#info">Registrar mi establecimiento</a><a class="btn o" href="tel:+56322741000">Llamar a Turismo</a>
+</section>
 
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const d = new FormData(form);
-        const nombre = (d.get("nombre") || "").trim();
-        const correo = (d.get("correo") || "").trim();
-        const edad = d.get("edad");
-        const intereses = d.getAll("intereses");
-        let ok = true;
+<section id="info">
+  <p class="eyebrow">Información</p>
+  <h2>Visita la Oficina de Turismo</h2>
+  <div class="info">
+    <div class="card"><h3>Dónde encontrarnos</h3>Av. Libertador B. O’Higgins 688<br>Casablanca, Valparaíso<br>CP 2580000, Chile</div>
+    <div class="card"><h3>Horario de atención</h3>Lun a Vie: 8:30 – 17:30<br>Sábado: 9:00 – 13:00<br>Dom y festivos: cerrado</div>
+    <div class="card"><h3>Contacto</h3>(+56 32) 274-1000<br>turismo@casablanca.cl<br>@TurismoCasablancaCL</div>
+  </div>
+</section>
 
-        setError("nombre", nombre ? "" : "Escribe tu nombre.");
-        setError(
-          "correo",
-          /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)
-            ? ""
-            : "Escribe un correo válido.",
-        );
-        setError(
-          "edad",
-          !edad || (edad >= 1 && edad <= 120) ? "" : "Ingresa una edad válida.",
-        );
-        setError(
-          "intereses",
-          intereses.length ? "" : "Elige al menos una opción.",
-        );
+<footer>
+  <div class="c">
+    <div><div class="brand">Municipalidad de<br><em>Casablanca</em></div><p>Portal oficial de turismo.<br>Región de Valparaíso, Chile.</p></div>
+    <div><h4>Secciones</h4><a href="#vino">Ruta del Vino</a><a href="#patrimonio">Patrimonio</a><a href="#gastronomia">Gastronomía</a><a href="#hospedaje">Hospedaje</a><a href="encuesta.html">Ruta del Casco Histórico</a></div>
+    <div><h4>Municipalidad</h4><a href="#info">Oficina de Turismo</a><a href="#info">Contacto institucional</a></div>
+  </div>
+  <div class="bt"><span>© 2026 Municipalidad de Casablanca · Portal Oficial de Turismo</span><span>Valle de Casablanca · 33°S · Chile</span></div>
+</footer>
 
-        const conAcomp = d.get("acompanantes") === "si";
-        const total = parseInt(d.get("total"), 10);
-        const menores = parseInt(d.get("menores"), 10) || 0;
-        const rangos = d.getAll("rango");
-        setError(
-          "total",
-          !conAcomp || total >= 2
-            ? ""
-            : "Indica cuántas personas viajan (mínimo 2).",
-        );
-        setError(
-          "menores",
-          !conAcomp || (menores >= 0 && (!total || menores < total))
-            ? ""
-            : "Debe haber al menos un adulto: los menores deben ser menos que el total.",
-        );
-        setError(
-          "rango",
-          conAcomp && menores > 0 && !rangos.length
-            ? "Elige al menos un rango de edad."
-            : "",
-        );
-
-        const bad = form.querySelector(".msg:not(:empty)");
-        if (bad) {
-          const target =
-            form.querySelector(".invalid") ||
-            bad.closest("fieldset, .field").querySelector("input");
-          target.focus();
-          return;
-        }
-
-        const datos = {
-          nombre,
-          edad,
-          origen: d.get("origen"),
-          correo,
-          acompanantes: d.get("acompanantes"),
-          total: conAcomp ? total : 1,
-          menores: conAcomp ? menores : 0,
-          rangosMenores: conAcomp ? rangos : [],
-          intereses,
-          newsletter: !!d.get("consent"),
-        };
-        // Espera al backend antes de redirigir; si no, la navegación cancela la petición.
-        try {
-          const res = await fetch("http://localhost:3000/api/visitantes", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(datos),
-          });
-          if (!res.ok) console.error("El servidor rechazó los datos:", await res.text());
-        } catch (err) {
-          console.error("No se pudo conectar al backend:", err);
-        }
-
-        // Guarda el perfil para la página de la ruta y salta a ella.
-        const etiquetas = {
-          vinas: "viñas y degustaciones",
-          gastronomia: "gastronomía",
-          naturaleza: "naturaleza",
-          cultura: "cultura local",
-          familia: "actividades familiares",
-          ciclismo: "ciclismo",
-        };
-        try {
-          localStorage.setItem(
-            "casablanca-perfil",
-            JSON.stringify({
-              ...datos,
-              intereses: intereses.map((v) => etiquetas[v] || v).join(", "),
-            }),
-          );
-        } catch (err) {
-          /* si el navegador bloquea el almacenamiento, la ruta se abre igual */
-        }
-        window.location.href = RUTA_URL;
-      });
-
-      document.getElementById("reset").addEventListener("click", () => {
-        form.reset();
-        syncCompanions();
-        done.style.display = "none";
-        intro.style.display = "block";
-      });
-    </script>
-  </body>
+<script src="js/frontis.js"></script>
+</body>
 </html>
