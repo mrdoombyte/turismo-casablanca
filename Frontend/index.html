@@ -9,7 +9,7 @@
 </head>
 <body>
 <nav>
-  <a class="logo" href="#top"><i>CB</i><span>Municipalidad de<b>Casablanca</b></span></a>
+  <div class="nl"><a class="logo" href="#top"><i>CB</i><span>Municipalidad de<b>Casablanca</b></span></a><a class="nav-cta" href="encuesta.html">Cuéntanos de dónde vienes</a></div>
   <ul>
     <li><a class="l" href="#vino">Ruta del Vino</a></li><li><a class="l" href="#patrimonio">Patrimonio</a></li>
     <li><a class="l" href="#gastronomia">Gastronomía</a></li><li><a class="l" href="#hospedaje">Hospedaje</a></li><li><a class="l" href="#info">Información</a></li>
@@ -35,7 +35,7 @@
   <div class="tabs" id="tabs"></div>
 </section>
 
-<!-- FOTOS: los fondos de .p1/.p2/.p3 y de las tarjetas (.a1-.a3, .h1-.h3) son degradados provisorios; ver css/frontis.css para cambiarlos por imágenes de assets/img/ -->
+<!-- FOTOS: .p1 y .p2 ya usan fotos; .p3 y las tarjetas de gastronomía y hospedaje (.a1-.a3, .h1-.h3) siguen con degradados provisorios; ver css/frontis.css -->
 <section class="dark" id="patrimonio">
   <p class="eyebrow">Cultura &amp; Historia</p>
   <h2>Patrimonio vivo<br><em>desde 1753</em></h2>
@@ -46,15 +46,15 @@
   </div>
 
   <!-- Carrusel de atracciones: desplazamiento nativo con scroll-snap; las flechas se manejan en js/frontis.js.
-       FOTOS: cada .img usa un degradado provisorio; para poner una foto agrega en el div
-       style="background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(assets/img/atraccion-01.jpg)" (y así con cada número) -->
+       FOTOS: cada .img lleva su foto en style="background-image:..."; las atracciones 03, 04 y 06 aún usan el degradado provisorio.
+       Para agregarles foto, copia el style de otra tarjeta cambiando el nombre del archivo de assets/img/ -->
   <div class="carrusel" role="region" aria-roledescription="carrusel" aria-label="Atracciones del casco histórico">
     <div class="car-head">
       <div><small>12 atracciones</small><h3>Recorre el casco histórico</h3></div>
       <div class="car-nav"><button type="button" data-dir="-1" aria-label="Atracción anterior">←</button><button type="button" data-dir="1" aria-label="Atracción siguiente">→</button></div>
     </div>
     <div class="track" id="track" tabindex="0">
-      <article class="at"><div class="img">Atracción 01</div><div class="bd">
+      <article class="at"><div class="img" style="background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(assets/img/foto_elfarol-elcontrol.jpg)">Atracción 01</div><div class="bd">
         <h3>Faro – Farol – El Control</h3>
         <p>Inaugurado en 1930 en honor al presidente Carlos Ibáñez del Campo, marcaba el inicio del camino a Valparaíso. Fue construido por Tomás Stiglich Vera como símbolo de la conexión Santiago–Valparaíso.</p>
         <p>Tras la caída de Ibáñez, el monolito fue destruido durante una manifestación social.</p>
@@ -62,7 +62,7 @@
         <h4>Calle Chapito</h4>
         <p>Antiguamente era el límite urbano de Casablanca. Entre zarzamoras, era un sitio de encuentros amorosos donde muchas veces quedaban “trapitos” abandonados, lo que dio origen a su primer nombre: Calle de los Trapitos. Con el tiempo, se transformó en Calle Chapito.</p>
       </div></article>
-      <article class="at"><div class="img">Atracción 02</div><div class="bd">
+      <article class="at"><div class="img" style="background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(assets/img/foto_plazabicentenario.jpg)">Atracción 02</div><div class="bd">
         <h3>Plaza Bicentenario (Las Lagunas)</h3>
         <p>Originalmente un terreno con napas de agua, fue renombrada en 1953 con motivo del bicentenario comunal.</p>
         <p>Aquí se entregaron terrenos para la Plaza Obrera, donde las casas fueron construidas con esquinas ochavadas. Hoy es un lugar de trabajo comunitario y cultura autogestionada.</p>
@@ -78,7 +78,7 @@
         <h3>Casa de Alejandro Galaz</h3>
         <p>Hogar del poeta y cronista casablanquino, conocido por su bohemia y sus escritos en <em>La Estrella</em> y <em>El Mercurio</em> de Valparaíso. Entre sus poemas destaca “Trompito 7 Colores”.</p>
       </div></article>
-      <article class="at"><div class="img">Atracción 05</div><div class="bd">
+      <article class="at"><div class="img" style="background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(assets/img/foto_donlalo.jpg)">Atracción 05</div><div class="bd">
         <h3>Almacén Don Lalo</h3>
         <p>Fundado en 1885 por el inmigrante español Valentín Cangas del Collado, este histórico almacén abarcaba hasta donde hoy está el BancoEstado.</p>
         <p>Actualmente, su propietario comparte la historia familiar y ofrece degustación de chicha.</p>
@@ -87,11 +87,11 @@
         <h3>Casa de Julio Montt Salamanca</h3>
         <p>Residencia de estilo neoclásico del héroe de la Batalla de la Concepción (1882). Refleja el auge agrícola y comercial de Casablanca a fines del siglo XIX.</p>
       </div></article>
-      <article class="at"><div class="img">Atracción 07</div><div class="bd">
+      <article class="at"><div class="img" style="background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(assets/img/foto_agricola.jpeg)">Atracción 07</div><div class="bd">
         <h3>Cooperativa Agrícola</h3>
         <p>Casona del siglo XIX que en los años 40 albergó la Cooperativa Agrícola y Lechera de Casablanca, clave en el desarrollo productivo local. Reunía a pequeños y medianos agricultores, fomentando la economía rural y el trabajo colaborativo.</p>
       </div></article>
-      <article class="at"><div class="img">Atracción 08</div><div class="bd">
+      <article class="at"><div class="img" style="background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(assets/img/foto_plazadearmas.jpg)">Atracción 08</div><div class="bd">
         <h3>Plaza de Armas de Casablanca</h3>
         <p>Desde 1796, conserva su trazado bajo la gestión de Ambrosio O'Higgins. Por aquí pasaba el Camino Real, ruta entre Santiago y Valparaíso.</p>
         <p>A principios del siglo XX estaba cerrada con rejas, tenía una pérgola central y era escenario de conciertos de la banda municipal.</p>
@@ -107,19 +107,19 @@
           <li><b>Estatua Padre Hurtado (2000):</b> Homenaje al fundador del Hogar de Cristo, que vivió en Casablanca hasta los 4 años.</li>
         </ul>
       </div></article>
-      <article class="at"><div class="img">Atracción 09</div><div class="bd">
+      <article class="at"><div class="img" style="background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(assets/img/foto_bomberos.jpg)">Atracción 09</div><div class="bd">
         <h3>1° Compañía de Bomberos</h3>
         <p>El 8 de noviembre de 1947, un incendio destruyó el querido Teatro Lux. La tragedia impulsó a los vecinos a organizarse y fundar, en 1949, la Primera Compañía de Bomberos de Casablanca, con apoyo de voluntarios de Valparaíso.</p>
       </div></article>
-      <article class="at"><div class="img">Atracción 10</div><div class="bd">
+      <article class="at"><div class="img" style="background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(assets/img/foto_municipalidad.jpeg)">Atracción 10</div><div class="bd">
         <h3>I. Municipalidad de Casablanca</h3>
         <p>Creada en 1827, actual edificio inaugurado en 1945 bajo Arturo Echazarreta.</p>
       </div></article>
-      <article class="at"><div class="img">Atracción 11</div><div class="bd">
+      <article class="at"><div class="img" style="background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(assets/img/foto_parroquiajpg.jpg)">Atracción 11</div><div class="bd">
         <h3>Parroquia Santa Bárbara</h3>
         <p>Más antigua que la ciudad misma; destruida por el terremoto de 1906 y reconstruida en 1913.</p>
       </div></article>
-      <article class="at"><div class="img">Atracción 12</div><div class="bd">
+      <article class="at"><div class="img" style="background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(assets/img/foto_museo.jpg)">Atracción 12</div><div class="bd">
         <h3>Centro Cultural – Museo – Teatro</h3>
         <p>Creado en 1987, reúne el Teatro Municipal, el Museo Arqueológico y Antropológico y la Biblioteca Pública Alejandro Galaz, consolidándose como el corazón cultural de la comuna.</p>
       </div></article>
