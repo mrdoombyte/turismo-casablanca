@@ -7,20 +7,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Playfair+Display:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lora:ital@0;1&family=Outfit:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --bg: #f2f3e9;
-        --ink: #183c2b;
-        --ink-2: #294b35;
-        --green: #527a43;
-        --green-soft: #668d53;
-        --muted: #617565;
-        --line: #cbd6c5;
-        --field: rgba(255, 255, 255, 0.42);
+        --bg: #ede3d3;
+        --ink: #4a1424;
+        --ink-2: #5a4036;
+        --accent: #4a1424;
+        --gold: #b9824a;
+        --gold2: #c9955f;
+        --muted: #7a5e52;
+        --line: #d9c9b4;
+        --field: #f8f1e7;
         --error: #a8432f;
+        --serif: "DM Serif Display", Georgia, serif;
+        --body: Lora, Georgia, serif;
+        --ui: Outfit, system-ui, sans-serif;
       }
       * {
         box-sizing: border-box;
@@ -29,41 +33,58 @@
         margin: 0;
         background: var(--bg);
         color: var(--ink);
-        font-family: "DM Sans", system-ui, sans-serif;
+        font-family: var(--ui);
       }
       .page {
         max-width: 1017px;
         margin: 0 auto;
-        padding: 24px 40px;
+        padding: 56px 40px 24px;
       }
-      header {
+      nav.top {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: #4a1424;
+        border-bottom: 1px solid #ffffff1a;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-bottom: 48px;
-      }
-      .brand {
-        display: flex;
-        align-items: center;
+        padding: 10px 5vw;
         gap: 12px;
-        font-family: "Playfair Display", serif;
-        font-size: 20px;
-        letter-spacing: 0.03em;
+        flex-wrap: wrap;
       }
       .logo {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        border: 1px solid rgba(24, 60, 43, 0.25);
-        display: grid;
-        place-items: center;
-      }
-      .tag {
-        color: #658451;
-        font-size: 12px;
-        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font: 500 11px/1.2 var(--ui);
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        letter-spacing: 0.22em;
+        color: #d6bfae;
+        text-decoration: none;
+      }
+      .logo i {
+        font-style: normal;
+        border: 1px solid var(--gold);
+        color: var(--gold2);
+        padding: 6px 5px;
+        font-size: 11px;
+      }
+      .logo b {
+        display: block;
+        color: var(--gold2);
+        font-weight: 600;
+        font-size: 13px;
+      }
+      nav.top a.l {
+        font: 500 11px var(--ui);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #c9aaa0;
+        text-decoration: none;
+      }
+      nav.top a.l:hover {
+        color: var(--gold2);
       }
       main {
         max-width: 620px;
@@ -72,7 +93,7 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        color: #668850;
+        color: var(--gold);
         font-size: 12px;
         font-weight: 700;
         text-transform: uppercase;
@@ -82,23 +103,25 @@
         content: "";
         width: 32px;
         height: 1px;
-        background: #668850;
+        background: var(--gold);
       }
       h1 {
-        font-family: "Playfair Display", serif;
+        font-family: var(--serif);
         font-weight: 400;
         font-size: clamp(2.2rem, 6vw, 3.2rem);
-        line-height: 1;
+        line-height: 1.05;
         margin: 20px 0 0;
-        color: #173d2a;
+        color: var(--ink);
       }
       h1 em {
-        color: var(--green-soft);
+        color: var(--gold);
       }
       .lead {
         max-width: 512px;
-        color: #627565;
-        font-size: 15px;
+        color: var(--ink-2);
+        font-family: var(--body);
+        font-style: italic;
+        font-size: 16px;
         line-height: 28px;
         margin: 20px 0;
       }
@@ -107,10 +130,10 @@
         align-items: center;
         gap: 8px;
         padding: 8px 16px;
-        border: 1px solid #c5d4bf;
-        border-radius: 999px;
+        border: 1px solid var(--line);
+        border-radius: 0;
         background: rgba(255, 255, 255, 0.55);
-        color: #42633f;
+        color: var(--ink);
         font-size: 12px;
         font-weight: 600;
       }
@@ -119,7 +142,7 @@
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background: var(--green-soft);
+        background: var(--gold);
       }
 
       form {
@@ -160,15 +183,14 @@
         height: 49px;
         padding: 13px 15px;
         font:
-          400 14px "DM Sans",
-          sans-serif;
+          400 14px var(--ui);
         color: var(--ink);
         background: var(--field);
         border: 1px solid var(--line);
-        border-radius: 12px;
+        border-radius: 0;
       }
       input::placeholder {
-        color: #9aa2a3;
+        color: #a8948a;
       }
       .control.icon input {
         padding-left: 44px;
@@ -179,7 +201,7 @@
         top: 16.5px;
         width: 16px;
         height: 16px;
-        stroke: #89979c;
+        stroke: var(--gold);
         fill: none;
         stroke-width: 1.2;
       }
@@ -191,7 +213,7 @@
         display: none;
       }
       :focus-visible {
-        outline: 2px solid var(--green);
+        outline: 2px solid var(--accent);
         outline-offset: 2px;
       }
       .invalid {
@@ -210,8 +232,8 @@
       .companions {
         padding: 20px;
         background: rgba(255, 255, 255, 0.4);
-        border: 1px solid #ccd7c6;
-        border-radius: 16px;
+        border: 1px solid var(--line);
+        border-radius: 0;
         margin-bottom: 28px;
       }
       .comp-head {
@@ -223,7 +245,7 @@
       .comp-fields {
         margin-top: 20px;
         padding-top: 20px;
-        border-top: 1px solid #ccd7c6;
+        border-top: 1px solid var(--line);
       }
       .comp-fields .row {
         margin-bottom: 0;
@@ -242,8 +264,8 @@
       .seg {
         display: flex;
         padding: 4px;
-        background: #dfe7da;
-        border-radius: 999px;
+        background: #e3d5c2;
+        border-radius: 0;
       }
       .seg input {
         position: absolute;
@@ -252,7 +274,7 @@
       }
       .seg label {
         padding: 8px 24px;
-        border-radius: 999px;
+        border-radius: 0;
         color: var(--muted);
         font-size: 16px;
         text-transform: uppercase;
@@ -265,12 +287,12 @@
           color 0.2s;
       }
       .seg input:checked + label {
-        background: #315b37;
+        background: var(--accent);
         color: #fff;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       }
       .seg input:focus-visible + label {
-        outline: 2px solid var(--green);
+        outline: 2px solid var(--accent);
         outline-offset: 2px;
       }
 
@@ -296,9 +318,9 @@
         gap: 6px;
         padding: 10px 16px;
         border: 1px solid var(--line);
-        border-radius: 999px;
+        border-radius: 0;
         background: rgba(255, 255, 255, 0.45);
-        color: #526b58;
+        color: var(--ink-2);
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
@@ -308,19 +330,19 @@
           color 0.2s;
       }
       .chip input:checked + label {
-        background: var(--green);
-        border-color: var(--green);
+        background: var(--accent);
+        border-color: var(--accent);
         color: #fff;
       }
       .chip input:checked + label::before {
         content: "✓";
       }
       .chip input:focus-visible + label {
-        outline: 2px solid var(--green);
+        outline: 2px solid var(--accent);
         outline-offset: 2px;
       }
       .hint {
-        color: #708273;
+        color: #8a6f63;
         font-size: 12px;
         margin: 6px 0 0;
       }
@@ -339,7 +361,7 @@
         width: 16px;
         height: 16px;
         margin-top: 4px;
-        accent-color: var(--green);
+        accent-color: var(--accent);
       }
 
       .submit {
@@ -348,14 +370,15 @@
         justify-content: space-between;
         align-items: center;
         padding: 16px 24px;
-        background: var(--green);
+        background: var(--accent);
         color: #fff;
         border: 0;
-        border-radius: 999px;
+        border-radius: 0;
         font:
-          400 16px "DM Sans",
-          sans-serif;
-        box-shadow: 0 12px 30px rgba(50, 91, 55, 0.2);
+          600 12px var(--ui);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        box-shadow: 0 12px 30px rgba(74, 20, 36, 0.2);
         cursor: pointer;
         transition: filter 0.2s;
       }
@@ -379,7 +402,7 @@
       }
       .privacy {
         text-align: center;
-        color: #7c8b7d;
+        color: #8a6f63;
         font-size: 11px;
         line-height: 20px;
         margin-top: 28px;
@@ -390,34 +413,31 @@
         padding: 36px 0;
       }
       .done h2 {
-        font-family: "Playfair Display", serif;
+        font-family: var(--serif);
         font-weight: 400;
         font-size: 2rem;
         margin: 0 0 12px;
       }
       .done p {
+        font-family: var(--body);
         color: var(--muted);
         line-height: 1.7;
       }
       .done button {
         margin-top: 16px;
         padding: 12px 24px;
-        border-radius: 999px;
-        border: 1px solid var(--green);
+        border-radius: 0;
+        border: 1px solid var(--accent);
         background: transparent;
-        color: var(--green);
+        color: var(--accent);
         font:
-          600 14px "DM Sans",
-          sans-serif;
+          600 14px var(--ui);
         cursor: pointer;
       }
 
       @media (max-width: 640px) {
         .page {
           padding: 16px 20px;
-        }
-        header {
-          padding-bottom: 28px;
         }
         .field.narrow {
           flex-basis: 100%;
@@ -430,26 +450,11 @@
     </style>
   </head>
   <body>
+    <nav class="top">
+      <a class="logo" href="index.html"><i>CB</i><span>Municipalidad de<b>Casablanca</b></span></a>
+      <a class="l" href="index.html">← Volver al portal</a>
+    </nav>
     <div class="page">
-      <header>
-        <div class="brand">
-          <span class="logo" aria-hidden="true">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="none"
-              stroke="#183C2B"
-              stroke-width="1.5"
-            >
-              <rect x="3.3" y="2.5" width="13.3" height="14.2" />
-              <rect x="7" y="10.8" width="5.8" height="1.7" />
-            </svg>
-          </span>
-          Casablanca
-        </div>
-        <span class="tag">Guía local</span>
-      </header>
 
       <main>
         <div id="intro">

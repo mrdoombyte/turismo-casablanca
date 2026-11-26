@@ -18,7 +18,11 @@ nav a.l:hover{color:var(--gold2)}
 .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
 h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.05}
 h1 em,h2 em{font-style:italic}
-.hero{background:radial-gradient(ellipse at 85% 10%,#8a4f55aa,transparent 55%),radial-gradient(ellipse at 70% 80%,#2b0a1499,transparent 60%),linear-gradient(135deg,#4a1424,#3a0f1c);color:var(--cream);padding:12vh 5vw 10vh;min-height:78vh}
+.nl{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.nav-cta{font:600 10px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);border:1px solid var(--gold);padding:8px 12px;text-decoration:none}
+.nav-cta:hover{background:#ffffff14}
+/* Hero: foto de fondo bajo un velo burdeo semitransparente para mantener la lectura del texto */
+.hero{background:radial-gradient(ellipse at 85% 10%,#8a4f55aa,transparent 55%),radial-gradient(ellipse at 70% 80%,#2b0a1499,transparent 60%),linear-gradient(90deg,#4a1424f2 30%,#3a0f1c99),url(../assets/img/foto_vino.jpg) right center/cover;color:var(--cream);padding:12vh 5vw 10vh;min-height:78vh}
 .hero h1{font-size:clamp(48px,8vw,92px);max-width:9ch;color:#f1e6d8}
 .hero h1 em{color:var(--gold2)}
 .hero p.s{font-style:italic;max-width:46ch;margin:26px 0 30px;color:#d9bfb2;font-size:17px}
@@ -54,9 +58,9 @@ h2{font-size:clamp(34px,5vw,54px);color:var(--ink);margin-bottom:18px}
    .p1{background:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(../assets/img/iglesia.jpg) center/cover}
    En las tarjetas (.a1-.a3, .h1-.h3) basta con: .a1{background:url(../assets/img/casona.jpg) center/cover}
    Rutas relativas a este archivo (css/), por eso empiezan con ../ */
-/* Patrimonio: p1 Iglesia Parroquial · p2 Plaza de Armas · p3 Casco histórico */
-.p1{background:linear-gradient(to top,#2b0a14f0,#2b0a1440),linear-gradient(135deg,#8c6e66,#5d4b52)}
-.p2{background:linear-gradient(to top,#2b0a14f0,#2b0a1440),linear-gradient(160deg,#7b6a74,#41303a)}
+/* Patrimonio: p1 Iglesia Parroquial · p2 Plaza de Armas · p3 Casco histórico (p3 aún sin foto) */
+.p1{background:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(../assets/img/foto_parroquiajpg.jpg) center/cover}
+.p2{background:linear-gradient(to top,#2b0a14f0,#2b0a1440),url(../assets/img/foto_plazadearmas.jpg) center/cover}
 .p3{background:linear-gradient(to top,#2b0a14f0,#2b0a1440),linear-gradient(120deg,#b08a5a,#7a4a3a)}
 /* Carrusel de atracciones (sección Patrimonio) */
 .carrusel{margin-top:64px}
@@ -69,7 +73,7 @@ h2{font-size:clamp(34px,5vw,54px);color:var(--ink);margin-bottom:18px}
 .track{display:grid;grid-auto-flow:column;grid-auto-columns:min(330px,82vw);gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:24px;padding-bottom:14px;scrollbar-width:thin;scrollbar-color:var(--gold) transparent}
 .track:focus-visible,.car-nav button:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
 .at{scroll-snap-align:start;background:#ffffff0a;border:1px solid #ffffff1a}
-.at .img{height:150px;display:flex;align-items:flex-end;padding:12px 16px;font:500 10px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);background:linear-gradient(to top,#2b0a14f0,#2b0a1440) center/cover,linear-gradient(135deg,#8c6e66,#5d4b52)}
+.at .img{height:150px;display:flex;align-items:flex-end;padding:12px 16px;font:500 10px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);background:linear-gradient(to top,#2b0a14f0,#2b0a1440),linear-gradient(135deg,#8c6e66,#5d4b52);background-size:cover;background-position:center}
 .at:nth-child(3n+2) .img{background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),linear-gradient(160deg,#7b6a74,#41303a)}
 .at:nth-child(3n) .img{background-image:linear-gradient(to top,#2b0a14f0,#2b0a1440),linear-gradient(120deg,#b08a5a,#7a4a3a)}
 .at .bd{padding:22px}
